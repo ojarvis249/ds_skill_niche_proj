@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr  2 09:32:36 2020
+
+author: Kenarapfaik
+url: https://github.com/arapfaik/scraping-glassdoor-selenium
+"""
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -27,7 +35,7 @@ def loadAllJobs():
                 close = driver.find_element(by=By.CSS_SELECTOR, value=".CloseButton")
                 close.click()
                 print("Popup closed")
-            except:
+            except:  # noqa: E722
                 print("No popup to close")
         except Exception as e:
             print("All jobs loaded or button not found:", e)
@@ -133,4 +141,4 @@ driver.quit()
 # Create a DataFrame and save to CSV
 df = pd.DataFrame(jobs)
 print(f"Total jobs collected: {len(df)}")
-df.to_csv("jobs.csv", index=False)
+df.to_csv("glassdoor_jobs.csv", index=False)
